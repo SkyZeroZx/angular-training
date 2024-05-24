@@ -1,26 +1,32 @@
 {
   "compilerOptions": {
-    "target": "es2022",
+    "target": "ES2022",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
     "useDefineForClassFields": false,
-    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "lib": ["ES2022", "dom", "DOM.Iterable"],
+    "paths": {
+      "@/*": ["src/app/*"],
+    }
   },
   "files": [],
   "include": [],
   "references": [
     {
-      "path": "./tsconfig.editor.json"
-    },
-    {
       "path": "./tsconfig.app.json"
     },
     {
       "path": "./tsconfig.spec.json"
+    },
+    {
+      "path": "./tsconfig.editor.json"
     }
   ],
   "extends": "../../tsconfig.base.json",
