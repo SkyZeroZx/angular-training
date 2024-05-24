@@ -1,0 +1,27 @@
+<div class="dialog-overlay" data-test="dialog-component">
+	<div class="dialog-content">
+		<h2 class="dialog-title" data-test="dialog-title">{{ confirmDialogOptions.title }}</h2>
+		<p class="dialog-message" data-test="dialog-message">{{ confirmDialogOptions.message }}</p>
+		<div class="dialog-icon">
+			<div class="icon-wrapper">
+				<img src="assets/svg/warning.svg" alt="icon dialog" height="60px" />
+			</div>
+		</div>
+		<div class="dialog-buttons">
+			<button
+				(click)="confirm()"
+				class="dialog-confirm-btn button primary-button"
+				data-test="confirm-button"
+			>
+				{{ confirmDialogOptions.confirmButtonText }}
+			</button>
+			<button
+				(click)="cancel()"
+				class="dialog-cancel-btn button secondary-button"
+				data-test="cancel-button"
+			>
+				{{ confirmDialogOptions.cancelButtonText }}
+			</button>
+		</div>
+	</div>
+</div>

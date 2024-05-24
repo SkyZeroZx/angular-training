@@ -1,0 +1,53 @@
+<main class="login">
+  <section class="login__header">
+    <h1 class="login__header__title">Bienvenido</h1>
+  </section>
+
+  <section class="login__body">
+    <div class="login__body__container">
+      <form class="login__body__container__form" [formGroup]="loginForm">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <div class="mt-1">
+            <input
+              formControlName="username"
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              placeholder="Email"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">
+            Password
+          </label>
+          <div class="mt-1">
+            <input
+              formControlName="password"
+              id="password"
+              name="password"
+              type="password"
+              autocomplete="current-password"
+              placeholder="Contraseña"
+            />
+          </div>
+        </div>
+
+        <div>
+          <button
+            [disabled]="loginForm.invalid"
+            (click)="logIn()"
+            class="button group relative w-full flex justify-center py-2 px-4"
+          >
+            Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,109 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+html {
+	margin: 0;
+	padding: 0;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	font-family: 'Quicksand';
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	height: 100%;
+	line-height: normal;
+	font-size: 13px;
+	color: #999999;
+	background-color: whitesmoke;
+
+	@media (max-width: 602px) {
+		overflow-x: hidden;
+	}
+}
+ 
+.container {
+	margin-top: 4rem;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	padding-top: 2rem;
+	padding-bottom: 1rem;
+}

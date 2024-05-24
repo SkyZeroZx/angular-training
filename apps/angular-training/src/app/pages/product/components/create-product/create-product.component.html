@@ -1,0 +1,89 @@
+<main class="create-product">
+  <h1 class="create-product__title">Formulario de Registro</h1>
+  <hr class="w-full" />
+  <form [formGroup]="createProductForm" class="create-product__form">
+    <div class="create-product__form__group">
+      <div class="create-product__form__group__input-group">
+        <label for="id">ID</label>
+        <input
+          type="text"
+          placeholder="ID"
+          class="form-control"
+          formControlName="id"
+          maxlength="10"
+          [customErrors]="{
+            alreadyExist: 'Ya fue registrado previamente este producto'
+          }"
+        />
+      </div>
+
+      <div class="create-product__form__group__input-group">
+        <label for="title">Titulo</label>
+        <input
+          type="text"
+          placeholder="Titulo"
+          class="form-control"
+          formControlName="title"
+          maxlength="100"
+          [customErrors]="{
+            minlength : 'Titulo requiere minimo 5 caracteres'
+          }"
+        />
+      </div>
+    </div>
+
+    <div class="create-product__form__group__input-group">
+      <div class="create-product__form__group__input-group">
+        <label for="description">Descripción</label>
+        <input
+          type="text"
+          placeholder="Descripción"
+          class="form-control"
+          formControlName="description"
+          maxlength="200"
+        />
+      </div>
+      <div class="create-product__form__group__input-group">
+        <label for="logo">Precio</label>
+        <input
+          type="number"
+          placeholder="Precio"
+          class="form-control"
+          formControlName="price"
+        />
+      </div>
+    </div>
+
+    <div class="create-product__form__group__input-group">
+      <div class="create-product__form__group__input-group">
+        <label for="date_release">Categoria</label>
+        <input
+          type="text"
+          placeholder="Categoria"
+          class="form-control"
+          formControlName="category"
+        />
+      </div>
+    </div>
+
+    <div class="create-product__form__actions">
+      <button
+        class="button--secondary"
+        type="button"
+        routerLink="/product"
+        data-test="btn-back"
+      >
+        Atras
+      </button>
+
+      <button
+        class="button"
+        type="button"
+        [disabled]="createProductForm.invalid"
+        (click)="create()"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+</main>

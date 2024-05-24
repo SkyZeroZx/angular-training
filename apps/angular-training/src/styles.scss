@@ -2,4 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '../src/app/styles/partials/scrollbar';
+@import '../src/app/styles/partials/forms';
+@import '../src/app/styles/partials/buttons';
+@import '../src/app/styles/partials/spinner-loader';
+@import '../src/app/styles/partials/table';
+@import '../src/app/styles/partials/dropdown';
+
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --primary: #57c1db;
+}

@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <div class="navbar__logo">
+    <img
+      ngSrc="https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg"
+      height="80"
+      width="80"
+      alt="logo"
+    />
+  </div>
+  <div class="navbar__user-options">
+    <button class="dropdown-button" [attr.data-info]="user().username">
+      <div class="dropdown-content">
+        <div class="flex flex-row items-center gap-3" (click)="logOut()">
+          <p>Salir</p>
+          <span
+            class="icon-[tabler--logout]"
+            style="color: black; width: 1.5rem; height: 1.5rem"
+          ></span>
+        </div>
+      </div>
+    </button>
+  </div>
+</nav>

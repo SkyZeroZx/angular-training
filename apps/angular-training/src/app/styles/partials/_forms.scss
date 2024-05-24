@@ -1,0 +1,73 @@
+[type='checkbox'],
+[type='radio'],
+input {
+  color: var(--primary);
+  &:focus,
+  &:hover {
+    @apply ring-[--primary];
+  }
+}
+
+[type='text'],
+[type='email'],
+[type='url'],
+[type='password'],
+[type='number'],
+[type='date'],
+[type='datetime-local'],
+[type='month'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='week'],
+[multiple],
+input,
+textarea,
+select {
+  @apply outline-none;
+  @apply bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-[--primary] focus:border-[--primary] block w-full p-2.5;
+
+  transition: all 0.3s;
+  &::placeholder {
+    @apply text-gray-300;
+  }
+
+  &.ng-invalid.ng-dirty.ng-touched {
+    @apply ring-1  ring-red-300 focus:ring-2 focus:border-red-300 focus:ring-red-300  #{!important};
+  }
+
+  &.ng-invalid.ng-touched.ng-pristine {
+    @apply ring-1  ring-red-300 focus:ring-2 focus:border-red-300 focus:ring-red-300  #{!important};
+  }
+
+  &.ng-invalid.ng-dirty {
+    @apply ring-1  ring-red-300 focus:ring-2 focus:border-red-300 focus:ring-red-300  #{!important};
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.group-validation.ng-invalid.ng-dirty.ng-touched {
+  [type='text'],
+  [type='email'],
+  [type='url'],
+  [type='password'],
+  [type='number'],
+  [type='date'],
+  [type='datetime-local'],
+  [type='month'],
+  [type='search'],
+  [type='tel'],
+  [type='time'],
+  [type='week'],
+  [multiple],
+  textarea,
+  select {
+    @apply ring-1;
+    @apply border-red-400;
+    @apply ring-red-400;
+  }
+}

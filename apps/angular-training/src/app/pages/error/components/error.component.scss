@@ -1,0 +1,22 @@
+.not-found {
+	padding: 2rem;
+	align-items: center;
+
+	p {
+		text-align: center;
+		padding-top: 1rem;
+		color: gray;
+		font-size: 1.875rem;
+		line-height: 2.25rem;
+	}
+
+	a {
+		font-weight: 600;
+		margin-top: 1rem;
+		text-decoration: none;
+		background-color: rgb(37 99 235);
+		&:hover {
+			background-color: rgb(29 78 216);
+		}
+	}
+}

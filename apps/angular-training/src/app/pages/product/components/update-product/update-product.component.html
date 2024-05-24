@@ -1,0 +1,76 @@
+<main class="container">
+	<h1 class="form-title">Editar Registro</h1>
+	<hr class="w-full" />
+
+	<form [formGroup]="updateProductForm">
+		<div class="form-group">
+			<div class="input-group">
+				<label for="id">ID</label>
+				<input type="text" placeholder="ID" class="form-control" formControlName="id" />
+			</div>
+
+			<div class="input-group">
+				<label for="name">Nombre</label>
+				<input
+					type="text"
+					placeholder="Tarjeta Credito"
+					class="form-control"
+					formControlName="name"
+					maxlength="100"
+				/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<label for="description">Descripción</label>
+				<input
+					type="text"
+					placeholder="Descripción"
+					class="form-control"
+					formControlName="description"
+					maxlength="200"
+				/>
+			</div>
+			<div class="input-group">
+				<label for="logo">Logo</label>
+				<input type="text" placeholder="Logo" class="form-control" formControlName="logo" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="input-group">
+				<label for="date_release">Fecha Liberación</label>
+				<input
+					type="date"
+					placeholder="Fecha Liberacion"
+					class="form-control"
+					formControlName="date_release"
+					[min]="minDate"
+					(input)="onChangeReleaseDate($event)"
+				/>
+			</div>
+			<div class="input-group">
+				<label for="date_revision">Fecha Revisión</label>
+				<input
+					type="date"
+					placeholder="Fecha Revision"
+					class="form-control"
+					formControlName="date_revision"
+				/>
+			</div>
+		</div>
+
+		<div class="flex flex-row form-buttons">
+			<button class="button secondary-button" type="button" routerLink="/">Atras</button>
+			<button
+				class="button primary-button"
+				type="button"
+				[disabled]="updateProductForm.invalid"
+				(click)="update()"
+			>
+				Editar
+			</button>
+		</div>
+	</form>
+</main>
