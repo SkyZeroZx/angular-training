@@ -1,11 +1,8 @@
-import { TypedFormControls } from '@/core/interface/forms';
 import { CreateProduct } from '@/core/interface/product';
 import { ProductService } from '@/services/product';
 import { ToastService } from '@/shared/ui';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { ProductValidador } from '../validadors';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create-product',
@@ -13,8 +10,8 @@ import { ProductValidador } from '../validadors';
   styleUrls: ['./create-product.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CreateProductComponent implements OnInit {
-  createProductForm!: FormGroup<TypedFormControls<CreateProduct>>;
+export class CreateProductComponent {
+  productForm: FormControl<CreateProduct> = this.fb.control(null);
 
   constructor(
     private fb: FormBuilder,
@@ -22,60 +19,8 @@ export class CreateProductComponent implements OnInit {
     private toastService: ToastService
   ) {}
 
-  ngOnInit() {
-    this.initCreateForm();
-  }
-
-  initCreateForm() {
-    this.createProductForm = this.fb.group({
-      id: this.fb.control(null, {
-        nonNullable: true,
-        validators: [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(10),
-        ],
-        asyncValidators: ProductValidador.productAlreadyExist(
-          this.productService
-        ),
-      }),
-      description: this.fb.control('', {
-        nonNullable: true,
-        validators: [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(255),
-        ],
-      }),
-      title: this.fb.control('', {
-        nonNullable: true,
-        validators: [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(100),
-        ],
-      }),
-      price: this.fb.control(null, {
-        nonNullable: true,
-        validators: [
-          Validators.required,
-          Validators.min(10),
-          Validators.max(200),
-        ],
-      }),
-      category: this.fb.control('', {
-        nonNullable: true,
-        validators: [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(100),
-        ],
-      }),
-    });
-  }
-
   create() {
-    const createProduct = this.createProductForm.getRawValue();
+    const createProduct = this.productForm.getRawValue();
     this.productService.create(createProduct).subscribe({
       next: () => {
         this.toastService.success({

@@ -2,6 +2,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { DEFAULT_ERROR } from '@/core/constant';
+import { EXCLUDE_LOADER } from '@/core/tokens';
 import { ToastService } from '@/shared/ui';
 import {
   HttpErrorResponse,
@@ -29,20 +30,25 @@ export class ErrorInterceptorService implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError((returnedError) => {
         let errorMessage = '';
+        const bypassErrorMessage = req.context.get(EXCLUDE_LOADER) === true;
 
         if (returnedError instanceof HttpErrorResponse) {
           errorMessage = `Error Status ${returnedError.status}: ${returnedError.statusText} - ${returnedError.error}`;
           this.mappedErrorHttp(returnedError);
         }
 
-        console.error(errorMessage || returnedError);
+        if (!bypassErrorMessage) {
+          console.error(errorMessage || returnedError);
 
-        this.toastService.error({
-          title: 'Error',
-          message: `${
-            returnedError.error.message || returnedError.error || DEFAULT_ERROR
-          }`,
-        });
+          this.toastService.error({
+            title: 'Error',
+            message: `${
+              returnedError.error.message ||
+              returnedError.error ||
+              DEFAULT_ERROR
+            }`,
+          });
+        }
 
         if (errorMessage) {
           return throwError(() => new Error(errorMessage));

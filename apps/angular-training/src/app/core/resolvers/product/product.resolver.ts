@@ -8,23 +8,20 @@ import { ResolveFn, Router } from '@angular/router';
 import { Product } from '../../interface/product';
 
 export const productResolver: ResolveFn<Product | undefined> = (
-	route,
-	_state,
-	productService = inject(ProductService)
+  route,
+  _state,
+  productService = inject(ProductService)
 ) => {
-	const router = inject(Router);
-	const productId = route.params['id'] as string;
-	// return productService.get().pipe(
-	// 	map((products) => products.find((product) => product.id === productId)),
-	// 	filter((value) => {
-	// 		if (!value) {
-	// 			router.navigate(['error']);
-	// 			return false;
-	// 		}
+  const router = inject(Router);
+  const productId = route.params['id'] as string;
+  return productService.findById(productId).pipe(
+    filter((value) => {
+      if (!value) {
+        router.navigate(['error']);
+        return false;
+      }
 
-	// 		return true;
-	// 	}),
-	// 	formatProduct()
-	// );
-	return of(undefined)
+      return true;
+    })
+  );
 };

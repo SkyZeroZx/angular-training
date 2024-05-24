@@ -1,20 +1,20 @@
-import { Observable, map } from 'rxjs';
+import { catchError, map, Observable, of, throwError } from 'rxjs';
 
+import {
+  PaginationAdapter,
+  PaginationProductAPI,
+} from '@/core/interface/pagination';
 import {
   CreateProduct,
   Product,
   ProductPaginationOptions,
   UpdateProduct,
 } from '@/core/interface/product';
+import { EXCLUDE_LOADER } from '@/core/tokens';
 import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { environment } from '../../../environments/environment';
-import {
-  PaginationAdapter,
-  PaginationProductAPI,
-} from '../../core/interface/pagination';
-import { EXCLUDE_LOADER } from '../../core/tokens';
 
 @Injectable({
   providedIn: 'root',
@@ -64,9 +64,20 @@ export class ProductService {
     });
   }
 
-  findById(id: string): Observable<boolean> {
-    return this.http.get<boolean>(`${this.base}/products/${id}`, {
-      context: new HttpContext().set(EXCLUDE_LOADER, true),
-    });
+  findById(id: string): Observable<Product> {
+    return this.http
+      .get<Product>(`${this.base}/products/${id}`, {
+        context: new HttpContext().set(EXCLUDE_LOADER, true),
+      })
+      .pipe(
+        catchError((error) => {
+          console.log(error.message);
+          if (error?.message?.includes('Status 404')) {
+            console.log(error.message);
+            return of(null);
+          }
+          return throwError(() => error);
+        })
+      );
   }
 }

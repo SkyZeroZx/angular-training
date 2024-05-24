@@ -54,9 +54,8 @@ export class ControlErrorsDirective implements OnInit {
         const firstKey = Object.keys(controlErrors)[0];
         const getError = this.errors[firstKey];
         const text =
-          this.customErrors()[firstKey] || getError(controlErrors[firstKey]);
-        console.log({ customErrors: this.customErrors });
-        this.setError(text);
+          this.customErrors()[firstKey] || getError?.(controlErrors[firstKey]);
+         this.setError(text);
       } else if (this.ref) {
         this.setError(null);
       }
