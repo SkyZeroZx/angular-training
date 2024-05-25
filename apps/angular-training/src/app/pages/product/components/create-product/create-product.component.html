@@ -2,10 +2,10 @@
   <h1 class="create-product__title">Formulario de Registro</h1>
   <hr class="w-full" />
   <form>
-    <app-product-form [formControl]="productForm" controlKey="createProduct" />
+    <app-product-form [formControl]="createProductForm" />
   </form>
 
-  <div class="create-product__form__actions">
+  <div class="create-product__actions">
     <button
       class="button--secondary"
       type="button"
@@ -18,7 +18,7 @@
     <button
       class="button"
       type="button"
-      [disabled]="productForm.invalid"
+      [disabled]="createProductForm.invalid"
       (click)="create()"
     >
       Enviar

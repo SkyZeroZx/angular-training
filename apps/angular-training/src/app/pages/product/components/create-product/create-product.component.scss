@@ -9,35 +9,17 @@
     font-weight: 700;
   }
 
-  &__form {
+  &__actions {
     display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2rem;
 
-    &__group {
-      display: flex;
-      flex-direction: row;
-      gap: 2rem;
-
-      &__input-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-    }
-
-    &__actions {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      padding-top: 2rem;
-
-      gap: 1rem;
-      button {
-        width: 50%;
-        min-height: 40px;
-        padding: 0.5rem;
-      }
+    gap: 1rem;
+    button {
+      width: 50%;
+      min-height: 40px;
+      padding: 0.5rem;
     }
   }
 }

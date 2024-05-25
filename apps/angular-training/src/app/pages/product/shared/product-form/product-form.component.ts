@@ -8,7 +8,6 @@ import {
   forwardRef,
   OnInit,
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -107,22 +106,16 @@ export class ProductFormComponent
 
   // propagates value changes to parent form control when nested address form changes
   registerOnChange(fn: any): void {
-    this.productForm.valueChanges
-      .pipe(takeUntilDestroyed(this.detroyRef))
-      .subscribe(fn);
+    this.productForm.valueChanges.subscribe(fn);
   }
 
   // marks parent form control as touched when nested address form changes
   registerOnTouched(fn: any): void {
-    this.productForm.valueChanges
-      .pipe(takeUntilDestroyed(this.detroyRef))
-      .subscribe(fn);
+    this.productForm.valueChanges.subscribe(fn);
   }
 
   registerOnValidatorChange(fn: any): void {
-    this.productForm.valueChanges
-      .pipe(takeUntilDestroyed(this.detroyRef))
-      .subscribe(fn);
+    this.productForm.valueChanges.subscribe(fn);
   }
 
   // disabled nested address form when parent form control is disabled

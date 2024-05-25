@@ -11,7 +11,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateProductComponent {
-  productForm: FormControl<CreateProduct> = this.fb.control(null);
+  createProductForm: FormControl<CreateProduct> = this.fb.control(null);
 
   constructor(
     private fb: FormBuilder,
@@ -20,7 +20,7 @@ export class CreateProductComponent {
   ) {}
 
   create() {
-    const createProduct = this.productForm.getRawValue();
+    const createProduct = this.createProductForm.getRawValue();
     this.productService.create(createProduct).subscribe({
       next: () => {
         this.toastService.success({
