@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { ToastService } from './toast.service';
 import { ToastComponent } from './components/toast.component';
-import { CommonModule } from '@angular/common';
-
+import { OverlayModule } from '../overlay';
+ 
 @NgModule({
-	imports: [CommonModule],
+	imports: [OverlayModule ],
 	declarations: [ToastComponent],
 	providers: [ToastService],
 	exports: [ToastComponent]

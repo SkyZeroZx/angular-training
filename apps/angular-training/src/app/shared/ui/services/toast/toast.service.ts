@@ -1,32 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { ToastData } from './interface/toast.interface';
 import { ToastTypes } from './constant/toast.enum';
+import { OverlayService } from '../overlay';
+import { ToastComponent } from './components/toast.component';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToastService {
-	data!: ToastData;
-	public open = new Subject<ToastData>();
+  constructor(private readonly overlayService: OverlayService) {}
 
-	success(data: ToastData) {
-		this.data = { ...data, show: true, type: ToastTypes.success };
-		this.open.next(this.data);
-	}
+  success(toastData: ToastData) {
+    const data = { show: true, type: ToastTypes.success, ...toastData };
+    this.createToastComponent(data);
+  }
 
-	error(data: ToastData) {
-		this.data = { ...data, show: true, type: ToastTypes.error };
-		this.open.next(this.data);
-	}
+  error(toastData: ToastData) {
+    const data = { ...toastData, show: true, type: ToastTypes.error };
+    this.createToastComponent(data);
+  }
 
-	warn(data: ToastData) {
-		this.data = { ...data, show: true, type: ToastTypes.warn };
-		this.open.next(this.data);
-	}
+  warn(toastData: ToastData) {
+    const data = { ...toastData, show: true, type: ToastTypes.warn };
+    this.createToastComponent(data);
+  }
 
-	hide() {
-		this.data = { ...this.data, show: false };
-		this.open.next(this.data);
-	}
+  private createToastComponent(data: ToastData) {
+    const componentRef = this.overlayService.attachRoot(ToastComponent);
+    componentRef.instance.open(data);
+    componentRef.changeDetectorRef.markForCheck();
+  }
 }
