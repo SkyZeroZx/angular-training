@@ -1,62 +1,153 @@
 .dialog-overlay {
-	position: fixed !important;
-	z-index: 1;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	overflow: auto;
-	background-color: rgb(0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.4);
-}
+  position: fixed !important;
+  z-index: 1059;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 
-.dialog-content {
-	border-radius: 5px;
-	background-color: whitesmoke;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 300px;
-	height: 260px;
-}
+  &__content {
+    overflow-y: auto;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    display: grid;
+    position: fixed;
+    z-index: 1060;
+    inset: 0;
+    box-sizing: border-box;
+    grid-template-areas:
+      'top-start top top-end'
+      'center-start center center-end'
+      'bottom-start bottom-center bottom-end';
+    grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(
+        min-content,
+        auto
+      );
+    height: 100%;
+    padding: 0.625em;
+    overflow-x: hidden;
+    animation: dialog-show 0.3s;
 
-.dialog-title {
-	margin-top: 1rem;
-	font-size: 20px;
-	font-weight: 700;
-	color: black;
-	text-align: center;
-}
+    &__container {
+      display: grid;
+      grid-column: 2;
+      grid-row: 2;
+      align-self: center;
+      justify-self: center;
+      position: relative;
+      box-sizing: border-box;
+      grid-template-columns: minmax(0, 100%);
+      width: 32em;
+      max-width: 100%;
+      padding: 0 0 1.25em;
+      border: none;
+      border-radius: 5px;
+      background: #fff;
+      color: #545454;
+      font-family: inherit;
+      font-size: 1rem;
 
-.dialog-message {
-	margin-top: 1rem;
-	font-weight: 500;
-	text-align: center;
-	color: black;
-	font-size: 16px;
+      &__icon {
+        display: flex;
+        position: relative;
+        box-sizing: content-box;
+        justify-content: center;
+        width: 5em;
+        height: 5em;
+        margin: 2.5em auto 0.6em;
+        border: 0.25em solid rgba(0, 0, 0, 0);
+        border-radius: 50%;
+        border-color: #facea8;
+        font-family: inherit;
+        line-height: 5em;
+        cursor: default;
+        user-select: none;
+        &__content {
+          display: flex;
+          align-items: center;
+          font-size: 3.75em;
+          color: #f8bb86;
+        }
+      }
+
+      &__title {
+        margin-top: 1rem;
+        font-size: 20px;
+        font-weight: 700;
+        color: black;
+        text-align: center;
+      }
+
+      &__message {
+        margin-top: 1.2rem;
+        margin-bottom: 1.2rem;
+        font-weight: 500;
+        text-align: center;
+        color: black;
+        font-size: 1rem;
+        @media (width <= 768px) {
+          margin-top: 1.4rem;
+          margin-bottom: 1.4rem;
+          font-size: 1.2rem;
+        }
+      }
+
+      &__actions {
+        display: flex;
+        justify-content: center;
+        margin-top: auto;
+        gap: 1rem;
+        &__confirm,
+        &__cancel {
+          padding: 0.5rem;
+          font-size: 1rem;
+          font-weight: 700;
+          @media (width <= 768px) {
+            display: flex;
+            justify-content: center;
+            width: 40%;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
 }
 
 .dialog-buttons {
-	display: flex;
-	justify-content: center;
-
-	margin-top: auto;
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  gap: 1rem;
+  .dialog-confirm-btn,
+  .dialog-cancel-btn {
+    font-size: 15px;
+    font-weight: 800;
+    @media (width <= 768px) {
+      display: flex;
+      justify-content: center;
+      width: 40%;
+      font-size: 1rem;
+    }
+  }
 }
 
-.dialog-icon {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-	display: flex;
-	justify-content: center;
-	img {
-		padding: 6px;
-		filter: invert(1);
-		filter: invert(100%) sepia(45%) saturate(3386%) hue-rotate(298deg) brightness(111%)
-			contrast(96%);
-	}
-	.icon-wrapper {
-		border-radius: 50%;
-		border: 2px solid #facea8;
-	}
+@keyframes dialog-show {
+  0% {
+    transform: scale(0.7);
+  }
+
+  45% {
+    transform: scale(1.05);
+  }
+
+  80% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

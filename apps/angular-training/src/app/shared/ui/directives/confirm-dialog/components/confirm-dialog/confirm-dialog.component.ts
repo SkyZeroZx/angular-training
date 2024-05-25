@@ -1,45 +1,40 @@
 import {
-	ChangeDetectionStrategy,
-	Component,
-	ElementRef,
-	EventEmitter,
-	Input,
-	Output
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  model,
+  output,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ConfirmDialogOptions } from '../../interfaces';
 
 @Component({
-	selector: 'app-confirm-dialog',
-	standalone: true,
-	imports: [CommonModule],
-	templateUrl: './confirm-dialog.component.html',
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	styleUrls: ['./confirm-dialog.component.scss']
+  selector: 'app-confirm-dialog',
+  standalone: true,
+  imports: [],
+  templateUrl: './confirm-dialog.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./confirm-dialog.component.scss'],
 })
 export class ConfirmDialogComponent {
-	@Input()
-	confirmDialogOptions!: ConfirmDialogOptions;
+  confirmDialogOptions = model<ConfirmDialogOptions>();
 
-	@Output()
-	canceled = new EventEmitter<void>();
+  canceled = output<void>();
 
-	@Output()
-	confirmed = new EventEmitter<void>();
+  confirmed = output<void>();
 
-	constructor(private confirmDialogElement: ElementRef<HTMLElement>) {}
+  constructor(private confirmDialogElement: ElementRef<HTMLElement>) {}
 
-	cancel() {
-		this.canceled.emit();
-		this.removeConfirmDialog();
-	}
+  cancel() {
+    this.canceled.emit();
+    this.removeConfirmDialog();
+  }
 
-	confirm() {
-		this.confirmed.emit();
-		this.removeConfirmDialog();
-	}
+  confirm() {
+    this.confirmed.emit();
+    this.removeConfirmDialog();
+  }
 
-	removeConfirmDialog() {
-		this.confirmDialogElement.nativeElement.remove();
-	}
+  removeConfirmDialog() {
+    this.confirmDialogElement.nativeElement.remove();
+  }
 }
