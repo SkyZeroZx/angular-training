@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-pagination',
   standalone: true,
-  imports: [FormsModule , NgTemplateOutlet],
+  imports: [FormsModule, NgTemplateOutlet],
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
