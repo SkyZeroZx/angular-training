@@ -1,10 +1,8 @@
 import { TypedFormControls } from '@/core/interface/forms';
 import { CreateProduct, Product } from '@/core/interface/product';
-import { ProductService } from '@/services/product';
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   forwardRef,
   OnInit,
 } from '@angular/core';
@@ -19,8 +17,6 @@ import {
   Validator,
   Validators,
 } from '@angular/forms';
-
-import { ProductValidador } from '../../components/validadors';
 
 @Component({
   selector: 'app-product-form',
@@ -46,11 +42,7 @@ export class ProductFormComponent
 {
   productForm!: FormGroup<TypedFormControls<CreateProduct>>;
 
-  constructor(
-    private readonly fb: FormBuilder,
-    private readonly productService: ProductService,
-    private readonly detroyRef: DestroyRef
-  ) {}
+  constructor(private readonly fb: FormBuilder) {}
 
   ngOnInit() {
     this.initCreateForm();
@@ -65,9 +57,6 @@ export class ProductFormComponent
           Validators.minLength(3),
           Validators.maxLength(10),
         ],
-        asyncValidators: ProductValidador.productAlreadyExist(
-          this.productService
-        ),
       }),
       description: this.fb.control(null, {
         nonNullable: true,
@@ -89,7 +78,7 @@ export class ProductFormComponent
         nonNullable: true,
         validators: [
           Validators.required,
-          Validators.min(10),
+          Validators.min(1),
           Validators.max(200),
         ],
       }),

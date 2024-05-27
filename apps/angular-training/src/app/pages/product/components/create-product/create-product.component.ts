@@ -3,6 +3,7 @@ import { ProductService } from '@/services/product';
 import { ToastService } from '@/shared/ui';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { ProductValidador } from '../validadors';
 
 @Component({
   selector: 'app-create-product',
@@ -11,7 +12,9 @@ import { FormBuilder, FormControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateProductComponent {
-  createProductForm: FormControl<CreateProduct> = this.fb.control(null);
+  createProductForm: FormControl<CreateProduct> = this.fb.control(null, {
+    asyncValidators: ProductValidador.productAlreadyExist(this.productService),
+  });
 
   constructor(
     private fb: FormBuilder,

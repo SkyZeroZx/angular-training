@@ -20,7 +20,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class ProductService {
-  private readonly base = environment.API_URL;
+  private readonly base = `${environment.API_URL}/auth`;
   constructor(private readonly http: HttpClient) {}
 
   get(
@@ -32,7 +32,7 @@ export class ProductService {
     params = params.set('skip', productPaginationOptions.skip);
 
     return this.http
-      .get<PaginationProductAPI>(`${this.base}/auth/products/search`, {
+      .get<PaginationProductAPI>(`${this.base}/products/search`, {
         params,
       })
       .pipe(
@@ -44,12 +44,15 @@ export class ProductService {
   }
 
   create(createProduct: CreateProduct): Observable<Product> {
-    return this.http.post<Product>(`${this.base}/products/add`, createProduct);
+    return this.http.post<Product>(
+      `${this.base}/products/add`,
+      createProduct
+    );
   }
 
   update(id: number, updateProduct: UpdateProduct): Observable<Product> {
-    return this.http.put<Product>(`${this.base}/bp/products`, {
-      id,
+    delete updateProduct.id;
+    return this.http.put<Product>(`${this.base}/products/${id}`, {
       ...updateProduct,
     });
   }
@@ -58,7 +61,7 @@ export class ProductService {
     let params = new HttpParams();
     params = params.set('id', id);
     //Add reponseType text because not return a JSON return a plain text
-    return this.http.delete(`${this.base}/bp/products`, {
+    return this.http.delete(`${this.base}/products`, {
       params,
       responseType: 'text',
     });

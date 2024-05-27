@@ -1,6 +1,5 @@
-import { filter, map, of } from 'rxjs';
+import { filter } from 'rxjs';
 
-import { formatProduct } from '@/core/utils/format-product';
 import { ProductService } from '@/services/product';
 import { inject } from '@angular/core';
 import { ResolveFn, Router } from '@angular/router';

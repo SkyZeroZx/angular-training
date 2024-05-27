@@ -9,6 +9,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { ContentModule } from './layout';
+import { globalErrorHandler } from './core/errors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { ContentModule } from './layout';
   ],
   providers: [
     ...interceptorsProviders,
+    ...globalErrorHandler,
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),// interceptors from DI allow usage of interceptors based in Class
     provideAnimationsAsync(),

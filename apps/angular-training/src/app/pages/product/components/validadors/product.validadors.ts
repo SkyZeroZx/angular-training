@@ -15,7 +15,7 @@ export class ProductValidador {
       return timer(200).pipe(
         switchMap(() =>
           productService
-            .findById(control.value)
+            .findById(control.value.id)
             .pipe(map((result) => (result ? { alreadyExist: true } : null)))
         )
       );
