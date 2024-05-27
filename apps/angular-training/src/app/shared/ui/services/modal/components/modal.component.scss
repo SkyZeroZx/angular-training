@@ -1,0 +1,240 @@
+.modal-content {
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	text-align: center;
+	min-height: 90dvh;
+	height: 90dvh;
+	overflow-y: scroll;
+	max-height: 80vh;
+	top: 5%;
+	width: 90%;
+	margin-left: auto;
+	background: white;
+	border-radius: 10px;
+	position: absolute;
+	scrollbar-color: transparent transparent;
+	@media (width > 700px) {
+		width: 50%;
+	}
+	@media (width > 1110px) {
+		width: 40%;
+	}
+}
+
+.modal-container {
+	position: fixed;
+	background-color: rgba(74, 74, 80, 0.8);
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: inline-block;
+}
+
+.dialog-container {
+	overflow-y: auto;
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	display: grid;
+	position: fixed;
+	z-index: 1060;
+	inset: 0;
+	box-sizing: border-box;
+	grid-template-areas:
+		'top-start top top-end'
+		'center-start center center-end'
+		'bottom-start bottom-center bottom-end';
+	grid-template-rows: minmax(min-content, auto) minmax(min-content, auto) minmax(min-content, auto);
+	height: 100%;
+	padding: 0.625em;
+	overflow-x: hidden;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dialog-content {
+	display: grid;
+	grid-column: 2;
+	grid-row: 2;
+	align-self: center;
+	justify-self: center;
+	position: relative;
+	box-sizing: border-box;
+	grid-template-columns: minmax(0, 100%);
+	width: 32em;
+	max-width: 100%;
+	padding: 0 0 1.25em;
+	border: none;
+	border-radius: 5px;
+	background: #fff;
+	color: #545454;
+	font-family: inherit;
+	font-size: 1rem;
+}
+
+.btn-close-modal {
+	@apply absolute -top-3   right-2;
+	font-size: 2.5rem;
+}
+
+@keyframes slide-in-bottom {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slide-out-bottom {
+	0% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+
+	100% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+}
+
+.bottom-sheet-container {
+	position: fixed;
+	background-color: rgba(74, 74, 80, 0.8);
+	height: 100%;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: inline-block;
+
+	&__outside {
+		height: 100%;
+		overflow: hidden;
+	}
+
+	&__content {
+		z-index: 100;
+		background-color: white;
+		min-height: 30vh;
+		padding: 1rem;
+		padding-bottom: 3rem;
+		border-top-left-radius: 1rem;
+		border-top-right-radius: 1rem;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+	}
+}
+
+.slideInBottom {
+	-webkit-animation: slide-in-bottom 0.3s;
+	animation: slide-in-bottom 0.3s;
+	opacity: 1;
+}
+
+.slideInTop {
+	animation: slide-out-bottom 0.5s ease-in-out forwards;
+}
+
+// Animations
+
+.fadeInDown {
+	-webkit-animation: fadeInDown 0.3s;
+	animation: fadeInDown 0.3s;
+	opacity: 1;
+}
+
+@-webkit-keyframes fadeInDown {
+	from {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	}
+
+	to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes fadeInDown {
+	from {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	}
+
+	to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.fadeOutUp {
+	-webkit-animation: fadeOutUp 0.4s;
+	animation: fadeOutUp 0.4s;
+	animation-fill-mode: forwards;
+	opacity: 0;
+}
+
+@-webkit-keyframes fadeOutUp {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	}
+}
+
+@keyframes fadeOutUp {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+		-webkit-transform: translate3d(0, -100%, 0);
+		transform: translate3d(0, -100%, 0);
+	}
+}
+
+.slideInUp {
+	transition: all 0.4s ease;
+	animation: slideInUp 0.4s;
+	opacity: 1;
+}
+
+@-webkit-keyframes slideInUp {
+	from {
+		transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+
+		visibility: visible;
+	}
+
+	to {
+		transform: scale(1, 1) translate3d(0, 0, 0);
+	}
+}
+
+@keyframes slideInUp {
+	from {
+		transform: scale(1.2, 1.2) translate3d(0, 0, 0);
+
+		visibility: visible;
+	}
+
+	to {
+		transform: scale(1, 1) translate3d(0, 0, 0);
+	}
+}

@@ -1,10 +1,19 @@
 import { PaginationPipe } from '@/shared/pipes';
-import { ConfirmDialogDirective, ControlErrorModule, PaginationComponent } from '@/shared/ui';
+import {
+  Ay11Module,
+  ConfirmDialogDirective,
+  ControlErrorModule,
+  PaginationComponent,
+} from '@/shared/ui';
 import { DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CreateProductComponent, ListProductComponent, UpdateProductComponent } from './components';
+import {
+  CreateProductComponent,
+  ListProductComponent,
+  UpdateProductComponent,
+} from './components';
 import { ProductRoutingModule } from './product.routing';
 import { ProductFormComponent } from './shared/product-form';
 
@@ -16,6 +25,7 @@ import { ProductFormComponent } from './shared/product-form';
     ProductFormComponent,
   ],
   imports: [
+    Ay11Module,
     DatePipe,
     ProductRoutingModule,
     PaginationPipe,
