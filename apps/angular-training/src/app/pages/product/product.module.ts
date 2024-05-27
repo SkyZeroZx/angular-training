@@ -16,14 +16,16 @@ import {
 } from './components';
 import { ProductRoutingModule } from './product.routing';
 import { ProductFormComponent } from './shared/product-form';
-
+import { ListProductMobileComponent } from './mobile';
+ 
 @NgModule({
   declarations: [
     ListProductComponent,
     CreateProductComponent,
     UpdateProductComponent,
     ProductFormComponent,
-  ],
+    ListProductMobileComponent
+   ],
   imports: [
     Ay11Module,
     DatePipe,

@@ -1,35 +1,22 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
+    "target": "es2022",
     "useDefineForClassFields": false,
     "forceConsistentCasingInFileNames": true,
-    "strict": false,
+    "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "baseUrl": ".",
-    "lib": ["ES2022", "dom", "DOM.Iterable"],
-    "paths": {
-      "@/*": ["src/app/*"],
-      "@angular-training/common": [
-        "../../libs/angular-training-common/src/index.ts"
-      ]
-    }
+    "noFallthroughCasesInSwitch": true
   },
   "files": [],
   "include": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     },
     {
       "path": "./tsconfig.spec.json"
-    },
-    {
-      "path": "./tsconfig.editor.json"
     }
   ],
   "extends": "../../tsconfig.base.json",
