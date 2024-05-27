@@ -37,17 +37,18 @@ export class ProductService {
       })
       .pipe(
         map((res) => ({
-          ...res,
+          metadata: {
+            limit: res.limit,
+            skip: res.skip,
+            total: res.total,
+          },
           data: res.products,
         }))
       );
   }
 
   create(createProduct: CreateProduct): Observable<Product> {
-    return this.http.post<Product>(
-      `${this.base}/products/add`,
-      createProduct
-    );
+    return this.http.post<Product>(`${this.base}/products/add`, createProduct);
   }
 
   update(id: number, updateProduct: UpdateProduct): Observable<Product> {

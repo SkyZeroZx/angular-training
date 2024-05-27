@@ -5,7 +5,7 @@ import {
   ControlErrorModule,
   PaginationComponent,
 } from '@/shared/ui';
-import { DatePipe } from '@angular/common';
+import { DatePipe, JsonPipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -16,19 +16,24 @@ import {
 } from './components';
 import { ProductRoutingModule } from './product.routing';
 import { ProductFormComponent } from './shared/product-form';
-import { ListProductMobileComponent } from './mobile';
- 
+import { ListProductMobileComponent, ProductDetailComponent, ProductItemComponent } from './mobile';
+import { ScrollEndDirective } from '../../shared/ui/directives/scroll-end';
+
 @NgModule({
   declarations: [
     ListProductComponent,
     CreateProductComponent,
     UpdateProductComponent,
     ProductFormComponent,
-    ListProductMobileComponent
-   ],
+    ListProductMobileComponent,
+    ProductDetailComponent,
+    ProductItemComponent,
+  ],
   imports: [
     Ay11Module,
     DatePipe,
+    JsonPipe,
+    ScrollEndDirective,
     ProductRoutingModule,
     PaginationPipe,
     ConfirmDialogDirective,

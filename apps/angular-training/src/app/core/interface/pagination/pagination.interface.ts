@@ -1,7 +1,11 @@
 import { Product } from '../product';
 
-export class PaginationAdapter<T = unknown> {
+export interface PaginationAdapter<T = unknown> {
   data: T;
+  metadata: MetadataPagination;
+}
+
+export interface MetadataPagination {
   total: number;
   skip: number;
   limit: number;
