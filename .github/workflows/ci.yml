@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - main
+      - feature/*
   pull_request:
 
-permissions:
-  actions: read
+permissions:     
+  pages: write  
+  actions: write
   contents: write
 
 jobs:
@@ -44,7 +46,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -55,10 +57,7 @@ jobs:
           path: ./*
           key: ${{ github.sha }}
       # Deploy your page in GitHub Page
-      - name: Desploy GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v4
+      - name: Deploy GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          target_branch: gh-pages
-          build_dir: dist/apps/angular-training/browser # Folder Final Build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          folder: dist/apps/angular-training/browser # Folder Final Build
