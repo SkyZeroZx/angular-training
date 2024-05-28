@@ -32,8 +32,8 @@ jobs:
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
-      - run: npx nx affected -t lint test build --base-ref https://skyzerozx.github.io/angular-training/
-      - run: 
+      - run: npx nx affected -t lint test build
+      - run : npm run build:angular-training
       - uses: actions/cache@v3
         id: restore-build
         with:
