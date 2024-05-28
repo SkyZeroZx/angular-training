@@ -32,7 +32,8 @@ jobs:
 
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
-      - run: npx nx affected -t lint test build
+      - run: npx nx affected -t lint test build --base-ref https://skyzerozx.github.io/angular-training/
+      - run: 
       - uses: actions/cache@v3
         id: restore-build
         with:
@@ -55,4 +56,9 @@ jobs:
           key: ${{ github.sha }}
       # Deploy your page in GitHub Page
       - name: Desploy GitHub Pages
-        run: npm run deploy:demo
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: dist/apps/angular-training/browser # Folder Final Build
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
