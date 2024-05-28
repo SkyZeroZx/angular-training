@@ -97,6 +97,9 @@
         "staticFilePath": "dist/apps/angular-training/browser",
         "spa": true
       }
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy"
     }
   }
 }

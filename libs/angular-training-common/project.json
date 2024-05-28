@@ -31,6 +31,9 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint"
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy"
     }
   }
 }
