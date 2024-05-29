@@ -4,7 +4,9 @@ import {
   ConfirmDialogDirective,
   ControlErrorModule,
   PaginationComponent,
+  ScrollEndDirective,
 } from '@/shared/ui';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,10 +16,13 @@ import {
   ListProductComponent,
   UpdateProductComponent,
 } from './components';
+import {
+  ListProductMobileComponent,
+  ProductDetailComponent,
+  ProductItemComponent,
+} from './mobile';
 import { ProductRoutingModule } from './product.routing';
 import { ProductFormComponent } from './shared/product-form';
-import { ListProductMobileComponent, ProductDetailComponent, ProductItemComponent } from './mobile';
-import { ScrollEndDirective } from '../../shared/ui/directives/scroll-end';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,7 @@ import { ScrollEndDirective } from '../../shared/ui/directives/scroll-end';
     Ay11Module,
     DatePipe,
     JsonPipe,
+    ScrollingModule,
     ScrollEndDirective,
     ProductRoutingModule,
     PaginationPipe,

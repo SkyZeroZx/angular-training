@@ -1,10 +1,14 @@
-<div
-  scrollEnd
-  (nearEnd)="onScroll()"
-  class="justify-center max-w-screen-xl grid md:grid-cols-2 lg:grid-cols-3 2xl:lg:grid-cols-4 gap-5"
->
-  @for (product of products(); track product.id) {
-  <app-product-item [product]="product" />
-
-  }
-</div>
+<main class="p-10">
+  <cdk-virtual-scroll-viewport
+    scrollEnd
+    (nearEnd)="onScroll()"
+    scrollWindow
+    itemSize="600" minBufferPx="800" maxBufferPx="1200"
+  >
+    <div class="flex flex-row flex-wrap gap-10">
+      <div *cdkVirtualFor="let product of products()">
+        <div class="h-[600px]"><app-product-item [product]="product" /></div>
+      </div>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</main>

@@ -13,6 +13,12 @@ export * from './directives/control-error/directives/control-error-container.dir
 export * from './directives/control-error/directives/control-error.directive';
 export * from './directives/control-error/form-error';
 export * from './directives/control-error/interface/control-error.interface';
+export * from './directives/scroll-end';
+export * from './services/modal/components/modal.component';
+export * from './services/modal/constants/animation.constant';
+export * from './services/modal';
+export * from './services/modal/interface/modal.interface';
+export * from './services/modal/services/modal.service';
 export * from './services/overlay';
 export * from './services/toast/components/toast.component';
 export * from './services/toast/constant/toast.enum';
