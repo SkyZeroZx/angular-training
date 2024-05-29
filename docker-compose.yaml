@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  angular-training:
+    build: 
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    image: angular-training-app
+    hostname: nginx
+    container_name: angular-training-app
+    restart: always 
+    ports:
+      - '80:80'

@@ -31,6 +31,21 @@
       },
       "configurations": {
         "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "production-github-pages": {
           "baseHref": "https://skyzerozx.github.io/angular-training/",
           "budgets": [
             {
