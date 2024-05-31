@@ -64,5 +64,6 @@
       "unitTestRunner": "jest"
     }
   },
+  "neverConnectToCloud": true,
   "nxCloudAccessToken": "MGIzYzVmYTItYWNlYS00YTMwLTg5NWYtZmY2NDdkZmZhZTdjfHJlYWQtd3JpdGU="
 }
