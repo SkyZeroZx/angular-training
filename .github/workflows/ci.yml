@@ -7,8 +7,8 @@ on:
       - feature/*
   pull_request:
 
-permissions:     
-  pages: write  
+permissions:
+  pages: write
   actions: write
   contents: write
 
@@ -35,13 +35,30 @@ jobs:
       # Prepend any command with "nx-cloud record --" to record its logs to Nx Cloud
       # - run: npx nx-cloud record -- echo Hello World
       - run: npx nx affected -t lint test build
-      - run : npm run build:angular-training:github-pages
+      - run: npm run build:angular-training:github-pages
       - uses: actions/cache@v3
         id: restore-build
         with:
           path: ./*
           key: ${{ github.sha }}
-  deploy:    
+  sonarcloud:
+    name: SonarCloud
+    needs: [build, unit-test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  deploy:
     name: Deploy Page
     needs: build
     runs-on: ubuntu-latest
