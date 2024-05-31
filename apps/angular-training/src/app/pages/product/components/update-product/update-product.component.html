@@ -8,7 +8,8 @@
 
   <div class="update-product__actions">
     <button
-      class="button--secondary"
+      btn
+      variant="secondary"
       type="button"
       routerLink="/product"
       data-test="btn-back"
@@ -17,7 +18,7 @@
     </button>
 
     <button
-      class="button"
+      btn
       type="button"
       [disabled]="updateProductForm.invalid"
       (click)="update()"

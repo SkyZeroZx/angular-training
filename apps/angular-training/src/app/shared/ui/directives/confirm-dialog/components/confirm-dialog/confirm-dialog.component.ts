@@ -6,11 +6,12 @@ import {
   output,
 } from '@angular/core';
 import { ConfirmDialogOptions } from '../../interfaces';
+import { ButtonComponent } from '../../../../components/button/button.component';
 
 @Component({
   selector: 'app-confirm-dialog',
   standalone: true,
-  imports: [],
+  imports: [ButtonComponent],
   templateUrl: './confirm-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./confirm-dialog.component.scss'],

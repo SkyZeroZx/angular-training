@@ -16,14 +16,17 @@
       </p>
       <div class="dialog-overlay__content__container__actions">
         <button
+          btn
           (click)="confirm()"
-          class="dialog-overlay__content__container__actions__confirm button"
+          class="dialog-overlay__content__container__actions__confirm"
         >
           {{ confirmDialogOptions().confirmButtonText }}
         </button>
         <button
+          btn
+          variant="secondary"
           (click)="cancel()"
-          class="dialog-overlay__content__container__actions__cancel button--secondary"
+          class="dialog-overlay__content__container__actions__cancel"
         >
           {{ confirmDialogOptions().cancelButtonText }}
         </button>

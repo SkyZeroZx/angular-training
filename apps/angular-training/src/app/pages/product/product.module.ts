@@ -1,6 +1,7 @@
 import { PaginationPipe } from '@/shared/pipes';
 import {
   Ay11Module,
+  ButtonComponent,
   ConfirmDialogDirective,
   ControlErrorModule,
   PaginationComponent,
@@ -38,6 +39,7 @@ import { ProductFormComponent } from './shared/product-form';
     Ay11Module,
     DatePipe,
     JsonPipe,
+    ButtonComponent,
     ScrollingModule,
     ScrollEndDirective,
     ProductRoutingModule,

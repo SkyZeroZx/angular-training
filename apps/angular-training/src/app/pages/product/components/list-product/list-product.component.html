@@ -9,7 +9,8 @@
       [formControl]="filter"
     />
     <button
-      class="search-form__add button"
+      btn
+      class="search-form__add"
       type="button"
       routerLink="create"
       data-test="btn-add"
@@ -30,7 +31,7 @@
 
       @for (product of listProduct() | pagination : pagination().currentPage() :
       pagination()?.pageSize(); track product.id) {
-      <tr tabindex="0"> 
+      <tr tabindex="0">
         <td data-th="Logo">
           <img
             [src]="product.thumbnail"
@@ -60,9 +61,10 @@
           {{ product.meta.updatedAt | date : 'YYYY/MM/dd' : '+0000' }}
         </td>
 
-        <td data-th="Acciones" class="table-actions"  >
+        <td data-th="Acciones" class="table-actions">
           <div class="dropdown">
-            <button tabindex="-1"
+            <button
+              tabindex="-1"
               data-test="btn-dropdown"
               type="button"
               class="dropdown-button"

@@ -1,3 +1,4 @@
+export * from './components/button/button.component';
 export * from './components/pagination/pagination.component';
 export * from './components/spinner';
 export * from './directives/button-a11y/a11y.module';
