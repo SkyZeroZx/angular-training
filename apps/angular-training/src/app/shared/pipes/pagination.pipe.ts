@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PaginationPipe<T = any> implements PipeTransform {
   transform(items: T[], currentPage: number, pageSize: number): T[] {
-    if (!items || !items.length) {
+    if (!items?.length) {
       return [];
     }
     const startIndex = (currentPage - 1) * pageSize;

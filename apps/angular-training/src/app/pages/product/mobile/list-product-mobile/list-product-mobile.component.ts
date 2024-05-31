@@ -25,10 +25,10 @@ export class ListProductMobileComponent implements OnInit {
     structuredClone(PRODUCT_PAGINATION_OPTIONS)
   );
 
-  isLoadingAppend = signal(false)
+  isLoadingAppend = signal(false);
 
   hasNextPage = computed(() => {
-    return !(this.products().length === this.metadataPagination().total);
+    return this.products().length !== this.metadataPagination().total;
   });
 
   constructor(private readonly productService: ProductService) {}

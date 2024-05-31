@@ -1,5 +1,5 @@
 import { Observable, timer } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 
 import { ProductService } from '@/services/product';
 import {
