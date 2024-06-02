@@ -2,6 +2,11 @@
   <h1>
     {{ title() }}
   </h1>
+  <div style="position: relative">
+    <mat-spinner [diameter]="215" [mode]="'determinate'" [value]="counter()" />
 
-  <mat-spinner [diameter]="215" [mode]="'determinate'" [value]="counter()" />
+    <p class="spinner-counter-down__counter">
+      {{ counter() }}
+    </p>
+  </div>
 </div>

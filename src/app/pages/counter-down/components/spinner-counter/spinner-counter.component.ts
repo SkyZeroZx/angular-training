@@ -43,9 +43,11 @@ export class SpinnerCounterComponent implements OnInit, OnDestroy {
 
   completed = outputFromObservable(this.isZeroCounter$);
 
-  subscription!: Subscription;
+  private subscription!: Subscription;
 
   private initialCounter: number = 0;
+
+  private readonly isBrowser = isPlatformBrowser(this.plataformId);
 
   constructor(
     @Inject(PLATFORM_ID)
@@ -66,7 +68,7 @@ export class SpinnerCounterComponent implements OnInit, OnDestroy {
   }
 
   counterDown() {
-    if (isPlatformBrowser(this.plataformId)) {
+    if (this.isBrowser) {
       this.subscription = this.interval$.subscribe(() => {
         this.counter.set(this.counter() - 1);
       });
@@ -74,9 +76,9 @@ export class SpinnerCounterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (isPlatformBrowser(this.plataformId)) {
+    if (this.isBrowser) {
       this.subscription.unsubscribe();
+      this.onDestroy.emit();
     }
-    this.onDestroy.emit();
   }
 }

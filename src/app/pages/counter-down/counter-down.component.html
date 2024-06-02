@@ -2,8 +2,8 @@
   <div class="counter-down__spinner_container">
     @if (show()) {
       <app-spinner-counter
-        title="Counter Down Example"
-        [counter]="30"
+        title="Counter Down Signal Based"
+        [counter]="100"
         (counterChange)="counterChange($event)"
         (update)="updateTimer()"
         (onDestroy)="onDestroy()"
