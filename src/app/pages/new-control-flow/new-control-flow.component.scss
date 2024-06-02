@@ -1,0 +1,13 @@
+.new-control-flow {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  &__title {
+    text-align: center;
+  }
+  &__text {
+    text-align: center;
+  }
+}

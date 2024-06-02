@@ -1,7 +1,7 @@
-<swiper-container swiperElement init="false" pagination="false">
+<swiper-container swiperElement init="false" pagination="false" [config]="config">
   @for (item of list(); track $index) {
     <swiper-slide>
-      <img [src]="item.image" />
+      <img [src]="item.image" style="height: 300px;" />
     </swiper-slide>
   }
 </swiper-container>

@@ -1,6 +1,22 @@
- 
+<div class="new-control-flow">
+  <h1 class="new-control-flow__title">New Control Flow</h1>
 
+  <div>
+    <p class="new-control-flow__text">First Slider</p>
+    <app-first-slider />
+  </div>
 
+  <div>
+    <p class="new-control-flow__text">Second Slider</p>
+    <app-second-slider />
+  </div>
 
-
- 
+  @defer (on viewport) {
+    <div>
+      <p class="new-control-flow__text">Third Slider</p>
+      <app-third-slider />
+    </div>
+  } @placeholder {
+    <p>Loading Third Slider</p>
+  }
+</div>

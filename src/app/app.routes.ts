@@ -16,6 +16,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'new-control-flow',
+    loadComponent: () =>
+      import('./pages/new-control-flow/new-control-flow.component').then(
+        (c) => c.NewControlFlowComponent,
+      ),
+  },
+  {
     path: 'legacy-counter-down',
     redirectTo: 'counter-down',
   },

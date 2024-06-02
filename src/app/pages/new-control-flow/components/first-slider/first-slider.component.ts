@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SwiperComponent } from '../swiper/swiper.component';
+import { Slider } from '../../../../core/interfaces';
 
 @Component({
   selector: 'app-first-slider',
@@ -10,7 +11,7 @@ import { SwiperComponent } from '../swiper/swiper.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FirstSliderComponent {
-  initialList = [
+  initialList: Slider[] = [
     {
       id: 1,
       image: 'https://swiperjs.com/demos/images/nature-1.jpg',
