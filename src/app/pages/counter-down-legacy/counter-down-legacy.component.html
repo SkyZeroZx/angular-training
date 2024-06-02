@@ -1,0 +1,28 @@
+<div class="counter-down">
+  <div class="counter-down__spinner_container">
+   
+      <app-legacy-spinner-counter
+        title="Counter Down Legacy"
+        [counter]="100"
+        (counterChange)="counterChange($event)"
+        (update)="updateTimer()"
+        (onDestroy)="onDestroy()"
+        (completed)="completed()"
+      />
+   
+  </div>
+
+  <div class="counter-down__actions">
+    <button mat-flat-button color="primary" (click)="showCounter()">
+      Show
+    </button>
+
+    <button mat-raised-button (click)="hideCounter()">Hide</button>
+  </div>
+
+  <div class="counter-down__actions">
+    <button mat-flat-button color="primary" (click)="restartCounter()">
+      Restart
+    </button>
+  </div>
+</div>

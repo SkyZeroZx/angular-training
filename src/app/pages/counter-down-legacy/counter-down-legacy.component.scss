@@ -1,0 +1,25 @@
+.counter-down {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+
+  &__spinner_container {
+    min-height: 215px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__empty_spinner {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}

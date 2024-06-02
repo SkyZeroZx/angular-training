@@ -24,6 +24,9 @@ export const routes: Routes = [
   },
   {
     path: 'legacy-counter-down',
-    redirectTo: 'counter-down',
+    loadComponent: () =>
+      import('./pages/counter-down-legacy/counter-down-legacy.component').then(
+        (c) => c.CounterDownLegacyComponent,
+      ),
   },
 ];
