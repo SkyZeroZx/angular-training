@@ -24,9 +24,22 @@ export const routes: Routes = [
   },
   {
     path: 'legacy-counter-down',
+
     loadComponent: () =>
       import('./pages/counter-down-legacy/counter-down-legacy.component').then(
         (c) => c.CounterDownLegacyComponent,
       ),
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: ({ queryParams }) => {
+      console.log(queryParams)
+      const isLegacy : boolean = JSON.parse(queryParams['isLegacy'] || 'false');
+      if (isLegacy) {
+        return 'legacy-counter-down';
+      }
+      return 'counter-down';
+    },
   },
 ];
