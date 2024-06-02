@@ -1,0 +1,30 @@
+<div class="counter-down">
+  <div class="counter-down__spinner_container">
+    @if (show()) {
+      <app-spinner-counter
+        title="Counter Down Example"
+        [counter]="30"
+        (counterChange)="counterChange($event)"
+        (update)="updateTimer()"
+        (onDestroy)="onDestroy()"
+        (completed)="completed()"
+      />
+    } @else {
+      <p class="counter-down__empty_spinner">Counter Down Complete</p>
+    }
+  </div>
+
+  <div class="counter-down__actions">
+    <button mat-flat-button color="primary" (click)="showCounter()">
+      Show
+    </button>
+
+    <button mat-raised-button (click)="hideCounter()">Hide</button>
+  </div>
+
+  <div class="counter-down__actions">
+    <button mat-flat-button color="primary" (click)="restartCounter()">
+      Restart
+    </button>
+  </div>
+</div>

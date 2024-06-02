@@ -1,0 +1,7 @@
+<swiper-container swiperElement init="false" pagination="false">
+  @for (item of list(); track $index) {
+    <swiper-slide>
+      <img [src]="item.image" />
+    </swiper-slide>
+  }
+</swiper-container>
