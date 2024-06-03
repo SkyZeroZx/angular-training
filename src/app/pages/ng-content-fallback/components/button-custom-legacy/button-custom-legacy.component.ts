@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
+  Input,
   ViewEncapsulation,
   booleanAttribute,
   input,
@@ -22,26 +23,33 @@ export const BUTTON_SIZE = {
 };
 
 @Component({
-  selector: 'button[btn]',
+  selector: 'button[btnLegacy]',
   standalone: true,
   imports: [],
-  templateUrl: './button-custom.component.html',
-  styleUrl: './button-custom.component.scss',
+  templateUrl: './button-custom-legacy.component.html',
+  styleUrl: './button-custom-legacy.component.scss',
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonCustomComponent {
+export class ButtonCustomLegacyComponent {
   @HostBinding('class') get classes() {
     return `button
-    	button--${this.variant()}
-   		${BUTTON_SIZE_PADDINGS[this.size()]}
-   		${BUTTON_SIZE[this.size()]}
+    	button--${this.variant}
+   		${BUTTON_SIZE_PADDINGS[this.size]}
+   		${BUTTON_SIZE[this.size]}
      `;
   }
 
-  size = input<'sm' | 'lg' | 'xl' | '2xl'>('lg');
-  variant = input<'primary' | 'secondary' | 'warn' | 'danger' | 'success'>(
-    'primary',
-  );
-  loading = input(false, { transform: booleanAttribute });
+  @Input()
+  size: 'sm' | 'lg' | 'xl' | '2xl' = 'lg';
+
+  @Input()
+  variant: 'primary' | 'secondary' = 'primary';
+
+  @Input({ transform: booleanAttribute })
+  loading = false;
+
+  isEmpty(ref: HTMLDivElement) {
+    return ref.textContent || ref.children.length;
+  }
 }

@@ -1,0 +1,7 @@
+.ng-content-fallback {
+  @apply flex flex-col gap-10 pt-10;
+
+  &__container {
+    @apply flex flex-wrap justify-center gap-10;
+  }
+}

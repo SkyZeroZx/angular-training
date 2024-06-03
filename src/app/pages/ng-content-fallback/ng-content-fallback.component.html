@@ -1,1 +1,19 @@
-<p>ng-content-fallback works!</p>
+<div class="ng-content-fallback">
+  <h1 class="text-center">Ng Content FallBack Example</h1>
+
+  <div class="ng-content-fallback__container">
+    <button btnLegacy></button>
+    <button btn></button>
+
+    <button btnLegacy loading>Loading Legacy</button>
+    <button btn loading>Loading New</button>
+
+    <button btnLegacy>
+      <span>Some Span Inner Legacy</span>
+    </button>
+
+    <button btn>
+      <span>Some Span Inner New</span>
+    </button>
+  </div>
+</div>
