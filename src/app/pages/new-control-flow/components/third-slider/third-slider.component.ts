@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { SwiperComponent } from '../swiper/swiper.component';
 import { Slider } from '../../../../core/interfaces';
-import { ProductDummyService } from '../../../../services/products/product.service';
 import { FakeStoreService } from '../../../../services/fake-store/fake-store.service';
 
 @Component({
