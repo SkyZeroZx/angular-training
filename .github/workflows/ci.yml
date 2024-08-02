@@ -53,6 +53,7 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+      - run: npm run test:angular-training
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
