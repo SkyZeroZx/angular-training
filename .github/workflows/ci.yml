@@ -82,6 +82,15 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+      - uses: actions/cache@v3
+        id: build-unit-test
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+      - uses: actions/download-artifact@v3
+        with:
+          name: coverage
+          path: coverage          
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
