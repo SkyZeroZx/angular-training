@@ -41,6 +41,35 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
+
+  unit-test:
+    name: Unit Test Jest
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - uses: actions/cache@v3
+        id: restore-build
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+      - name: Run All Unit Tests
+        run: npm run test:angular-training
+      - uses: actions/cache@v3
+        id: build-unit-test
+        with:
+          path: ./*
+          key: ${{ github.sha }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: coverage
+          path: coverage/*
+
   sonarcloud:
     name: SonarCloud
     needs: build
@@ -53,7 +82,6 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      - run: npm run test:angular-training
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
