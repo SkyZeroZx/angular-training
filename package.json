@@ -7,7 +7,6 @@
     "start:angular-training": "nx serve --project=angular-training",
     "test:angular-training": "nx test --project=angular-training",
     "test:affected": "nx affected -t test",
-    "test:coverage" : "npx nx run angular-training:test --codeCoverage",
     "build": "nx run-many -t build",
     "build:angular-training": "nx build angular-training --configuration production",
     "build:angular-training:github-pages": "nx build angular-training --configuration production-github-pages",
@@ -17,6 +16,11 @@
     "lint:fix": "nx run-many -t lint --fix"
   },
   "private": true,
+  "jestSonar": {
+    "reportPath": "./coverage/apps/angular-training/report",
+    "reportFile": "sonar_report.xml",
+    "indent": 4
+  },
   "dependencies": {
     "@angular/animations": "~17.3.10",
     "@angular/cdk": "17.3",
@@ -70,6 +74,7 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jest-preset-angular": "~14.0.4",
+    "jest-sonar-reporter": "^2.0.0",
     "jsonc-eslint-parser": "^2.1.0",
     "ng-packagr": "~17.3.0",
     "nx": "19.0.8",
