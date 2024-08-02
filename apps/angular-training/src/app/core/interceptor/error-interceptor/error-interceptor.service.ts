@@ -36,7 +36,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
           errorMessage = `Error Status ${returnedError.status}: ${returnedError.statusText} - ${returnedError.error}`;
           this.mappedErrorHttp(returnedError);
         }
-
+        
         if (!bypassErrorMessage) {
           console.error(errorMessage || returnedError);
 

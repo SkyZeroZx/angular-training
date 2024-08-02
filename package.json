@@ -5,8 +5,9 @@
   "scripts": {
     "prepare": "npm run build",
     "start:angular-training": "nx serve --project=angular-training",
-    "test:angular-training": "nx run angular-training:test",
+    "test:angular-training": "nx test --project=angular-training",
     "test:affected": "nx affected -t test",
+    "test:coverage" : "npx nx run angular-training:test --codeCoverage",
     "build": "nx run-many -t build",
     "build:angular-training": "nx build angular-training --configuration production",
     "build:angular-training:github-pages": "nx build angular-training --configuration production-github-pages",

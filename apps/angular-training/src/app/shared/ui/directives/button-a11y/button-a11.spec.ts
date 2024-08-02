@@ -19,9 +19,9 @@ describe('ButtonAy11Directive', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TestComponentA11Y],
-      imports: [CommonModule, Ay11Module],
-    }).compileComponents();
+			declarations: [TestComponentA11Y],
+			imports: [CommonModule, ButtonAy11Directive]
+		}).compileComponents();
 
     fixture = TestBed.createComponent(TestComponentA11Y);
     fixture.detectChanges();
